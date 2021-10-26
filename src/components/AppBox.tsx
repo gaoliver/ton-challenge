@@ -7,6 +7,7 @@ import {
   ViewStyle
 } from 'react-native';
 import colors from '../constants/colors';
+import { borderRadius } from '../constants/settings';
 
 interface IProps {
   boxStyle?: StyleProp<ViewStyle>;
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: borderRadius,
     backgroundColor: colors.light.boxBackground,
     elevation: 3,
     shadowOffset: {

@@ -6,7 +6,7 @@ import Navigation from './src/Navigation';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <Navigation />
+        <Navigation />
     </SafeAreaProvider>
   );
 }

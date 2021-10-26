@@ -14,14 +14,24 @@ interface IHomeProps {
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
   return (
-    <AppContainer>
-      <AppContent>
-        <FlatList data={products} renderItem={ProductBox} />
-      </AppContent>
-    </AppContainer>
+    <FlatList
+      data={products}
+      renderItem={ProductBox}
+      numColumns={2}
+      style={styles.container}
+      columnWrapperStyle={styles.listStyle}
+    />
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10
+  },
+  listStyle: {
+    justifyContent: 'space-between',
+    marginBottom: 8
+  }
+});
