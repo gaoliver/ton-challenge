@@ -1,34 +1,22 @@
 import React from 'react';
-import {
-  createStackNavigator,
-  StackNavigationProp
-} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { StackParamList } from './utils/types';
 import HomeScreen from './screens/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator<StackParamList>();
 
-type MainNavigationProps = StackNavigationProp<StackParamList, "Home">;
-
-interface INavigationProps {
-  navigation: MainNavigationProps
-}
-
-const Navigation = ({ navigation }: INavigationProps) => {
-  const onCartPress = () => {
-    navigation.navigate('Cart');
-  };
-
+const Navigation = () => {
   return (
-    <>
+    <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
-    </>
+    </NavigationContainer>
   );
 };
 
