@@ -1,7 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
+
+import AppContainer from '../components/AppContainer';
+import AppContent from '../components/AppContent';
+import ProductBox from '../components/ProductBox';
 
 import { NavigationProp } from '../utils/types';
+import products from '../__mocks__/products';
 
 interface IHomeProps {
   navigation: NavigationProp;
@@ -9,9 +14,11 @@ interface IHomeProps {
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <AppContainer>
+      <AppContent>
+        <FlatList data={products} renderItem={ProductBox} />
+      </AppContent>
+    </AppContainer>
   );
 };
 
