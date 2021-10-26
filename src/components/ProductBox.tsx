@@ -10,7 +10,7 @@ import AppBox from './AppBox';
 
 interface IProductBox {
   item: IProduct;
-  onProductPress?: () => {};
+  onProductPress?: () => void;
 }
 
 const ProductBox = ({ item, onProductPress }: IProductBox) => {

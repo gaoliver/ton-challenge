@@ -6,7 +6,7 @@ export type NavigationProp = StackNavigationProp<StackParamList, 'Home'>;
 export type StackParamList = {
   Home: NavigationProp;
   Cart: undefined;
-  Product: undefined;
+  Product: { productId: number };
 };
 export type IMainNavigation = {
   MainHome: NavigatorScreenParams<StackParamList>;

@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import ProductBox from '../components/ProductBox';
 
-import { NavigationProp } from '../utils/types';
+import { IProduct, NavigationProp } from '../utils/types';
 import products from '../__mocks__/products';
 
 interface IHomeProps {
@@ -11,10 +11,19 @@ interface IHomeProps {
 }
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
+  const onPressProduct = (productId: number) => {
+    navigation.navigate('Product', { productId });
+  };
+
+  type IRenderItem = { item: IProduct };
+  const renderProduct = ({ item }: IRenderItem) => (
+    <ProductBox item={item} onProductPress={() => onPressProduct(item.id)} />
+  );
+
   return (
     <FlatList
       data={products}
-      renderItem={ProductBox}
+      renderItem={renderProduct}
       numColumns={2}
       style={styles.container}
       columnWrapperStyle={styles.listStyle}

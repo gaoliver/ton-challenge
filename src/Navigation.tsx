@@ -9,6 +9,7 @@ import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import AppHeader from './components/AppHeader';
 import CartScreen from './screens/CartScreen';
+import ProductScreen from './screens/ProductScreen';
 
 const Stack = createStackNavigator<StackParamList>();
 const MainStack = createStackNavigator<IMainNavigation>();
@@ -26,6 +27,7 @@ const ScreensNavigation = ({ navigation }: INavigationProps) => {
       >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
+        <Stack.Screen name="Product" component={ProductScreen} />
       </Stack.Navigator>
     </>
   );
