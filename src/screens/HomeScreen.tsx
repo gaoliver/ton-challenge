@@ -1,8 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import AppContainer from '../components/AppContainer';
-import AppContent from '../components/AppContent';
 import ProductBox from '../components/ProductBox';
 
 import { NavigationProp } from '../utils/types';

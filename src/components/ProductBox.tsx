@@ -1,19 +1,21 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import colors from '../constants/colors';
 import { borderRadius } from '../constants/settings';
 import currencyFormat from '../utils/currencyFormat';
-import { IProduct } from '../utils/types';
+import { IProduct, StackParamList } from '../utils/types';
 
 import AppBox from './AppBox';
 
 interface IProductBox {
   item: IProduct;
+  onProductPress?: () => {};
 }
 
-const ProductBox = ({ item }: IProductBox) => {
+const ProductBox = ({ item, onProductPress }: IProductBox) => {
   return (
-    <AppBox boxStyle={styles.container} key={item.id}>
+    <AppBox boxStyle={styles.container} key={item.id} onPress={onProductPress}>
       <Image source={{ uri: item.image }} style={styles.image} />
       <Text style={styles.category}>{item.category}</Text>
       <Text style={styles.title} numberOfLines={3}>
@@ -42,17 +44,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.colors.accent,
     paddingHorizontal: 10,
     paddingVertical: 3,
-    fontSize: 10,
+    fontSize: 10
   },
   title: {
     flex: 1,
     marginVertical: 10,
     fontSize: 12,
-    color: colors.light.text,
+    color: colors.light.text
   },
   price: {
     fontSize: 18,
     fontWeight: 'bold',
     color: colors.light.text
-  },
+  }
 });

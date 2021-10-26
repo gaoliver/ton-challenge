@@ -9,17 +9,25 @@ import {
 import colors from '../constants/colors';
 import { borderRadius } from '../constants/settings';
 
-interface IProps {
+interface IBoxProps {
   boxStyle?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 }
 
-const AppBox: React.FC<IProps> = ({ boxStyle, children }) => {
+const translate = (props: IBoxProps) => ({
+  boxStyle: props.boxStyle && props.boxStyle,
+  onPress: props.onPress ? props.onPress : () => {}
+});
+
+const AppBox: React.FC<IBoxProps> = (props) => {
+  const {boxStyle, onPress} = translate(props)
+
   return (
     <Pressable
       style={[styles.form, boxStyle]}
-      onPress={() => console.warn('ok')}
+      onPress={onPress}
     >
-      {children}
+      {props.children}
     </Pressable>
   );
 };
