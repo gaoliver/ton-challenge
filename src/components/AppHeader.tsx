@@ -5,14 +5,18 @@ import { Searchbar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
+import { NavigationProp } from '../utils/types';
 
-interface Props {
-  title?: string | null;
-  onPress: () => void;
+interface IHeaderProps {
+  navigation: NavigationProp;
 }
 
-const AppHeader = ({ title, onPress, ...props }: Props) => {
+const AppHeader = ({ navigation, ...props }: IHeaderProps) => {
   const logo = require('../../assets/adaptive-icon.png');
+
+  const onCartPress = () => {
+    navigation.navigate('Cart');
+  };
 
   return (
     <Header
@@ -25,16 +29,12 @@ const AppHeader = ({ title, onPress, ...props }: Props) => {
       </Left>
 
       <Body>
-        {!title ? (
-          <Searchbar
-            value=""
-            placeholder="Pesquisa seu produto"
-            style={styles.searchBar}
-            inputStyle={styles.inputStyleSearchBar}
-          />
-        ) : (
-          <Text style={styles.screenTitle}>{title}</Text>
-        )}
+        <Searchbar
+          value=""
+          placeholder="Pesquisa seu produto"
+          style={styles.searchBar}
+          inputStyle={styles.inputStyleSearchBar}
+        />
       </Body>
 
       <Right style={styles.sides}>
@@ -42,7 +42,7 @@ const AppHeader = ({ title, onPress, ...props }: Props) => {
           name="user-circle-o"
           size={40}
           color={Colors.light.accentText}
-          onPress={onPress}
+          onPress={onCartPress}
         />
       </Right>
     </Header>
