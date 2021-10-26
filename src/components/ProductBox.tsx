@@ -7,6 +7,7 @@ import currencyFormat from '../utils/currencyFormat';
 import { IProduct, StackParamList } from '../utils/types';
 
 import AppBox from './AppBox';
+import TextCategory from './TextCategory';
 
 interface IProductBox {
   item: IProduct;
@@ -17,7 +18,7 @@ const ProductBox = ({ item, onProductPress }: IProductBox) => {
   return (
     <AppBox boxStyle={styles.container} key={item.id} onPress={onProductPress}>
       <Image source={{ uri: item.image }} style={styles.image} />
-      <Text style={styles.category}>{item.category}</Text>
+      <TextCategory name={item.category} />
       <Text style={styles.title} numberOfLines={3}>
         {item.title}
       </Text>
@@ -37,14 +38,8 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 130,
-    borderRadius: borderRadius
-  },
-  category: {
-    marginTop: 10,
-    backgroundColor: colors.colors.accent,
-    paddingHorizontal: 10,
-    paddingVertical: 3,
-    fontSize: 10
+    borderRadius: borderRadius,
+    marginBottom: 10,
   },
   title: {
     flex: 1,
