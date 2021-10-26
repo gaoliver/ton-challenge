@@ -5,7 +5,8 @@ export default {
   colors: {
     primary: primary,
     accent: secondary,
-    grey: '#555555'
+    grey: '#555555',
+    price: "#060"
   },
   light: {
     background: '#d5d5d5',

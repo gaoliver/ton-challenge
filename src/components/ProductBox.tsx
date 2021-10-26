@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import colors from '../constants/colors';
 import { borderRadius } from '../constants/settings';
 import currencyFormat from '../utils/currencyFormat';
-import { IProduct, StackParamList } from '../utils/types';
+import { IProduct } from '../utils/types';
 
 import AppBox from './AppBox';
 import TextCategory from './TextCategory';
