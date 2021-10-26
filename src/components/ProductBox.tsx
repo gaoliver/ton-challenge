@@ -15,6 +15,7 @@ const ProductBox = ({ item }: IProductBox) => {
   return (
     <AppBox boxStyle={styles.container} key={item.id}>
       <Image source={{ uri: item.image }} style={styles.image} />
+      <Text style={styles.category}>{item.category}</Text>
       <Text style={styles.title} numberOfLines={3}>
         {item.title}
       </Text>
@@ -36,13 +37,22 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: borderRadius
   },
+  category: {
+    marginTop: 10,
+    backgroundColor: colors.colors.accent,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    fontSize: 10,
+  },
   title: {
     flex: 1,
+    marginVertical: 10,
     fontSize: 12,
     color: colors.light.text,
-    marginTop: 10
   },
   price: {
-    flex: 1
-  }
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.light.text
+  },
 });
