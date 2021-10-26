@@ -1,21 +1,40 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationProp
+} from '@react-navigation/stack';
 
-import { StackParamList } from './utils/types';
+import { IMainNavigation, StackParamList } from './utils/types';
 import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import AppHeader from './components/AppHeader';
 
 const Stack = createStackNavigator<StackParamList>();
+const MainStack = createStackNavigator<IMainNavigation>();
 
-const Navigation = () => {
+type MainNavigationProps = StackNavigationProp<StackParamList, 'Home'>;
+type INavigationProps = { navigation: MainNavigationProps };
+
+const ScreensNavigation = ({ navigation }: INavigationProps) => {
   return (
-    <NavigationContainer>
+    <>
+      <AppHeader navigation={navigation} />
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
+    </>
+  );
+};
+
+const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <MainStack.Navigator screenOptions={{ headerShown: false }}>
+        <MainStack.Screen name="MainHome" component={ScreensNavigation} />
+      </MainStack.Navigator>
     </NavigationContainer>
   );
 };

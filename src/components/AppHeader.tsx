@@ -4,7 +4,7 @@ import { Body, Header, Left, Right } from 'native-base';
 import { Searchbar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
-import Colors from '../constants/Colors';
+import Colors from '../constants/colors';
 import { NavigationProp } from '../utils/types';
 
 interface IHeaderProps {
@@ -39,7 +39,7 @@ const AppHeader = ({ navigation, ...props }: IHeaderProps) => {
 
       <Right style={styles.sides}>
         <FontAwesome
-          name="user-circle-o"
+          name="cart-plus"
           size={40}
           color={Colors.light.accentText}
           onPress={onCartPress}
