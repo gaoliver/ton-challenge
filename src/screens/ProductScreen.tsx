@@ -12,6 +12,7 @@ import { borderRadius } from '../constants/settings';
 import { ApplicationReducer } from '../redux';
 import currencyFormat from '../utils/currencyFormat';
 import { IProduct, NavigationParamsProp } from '../utils/types';
+import AppBox from '../components/AppBox';
 
 const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
   const { productId } = route.params;
@@ -48,16 +49,18 @@ const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
   return (
     <>
       <AppContent>
-        <Image source={{ uri: translate.image }} style={styles.image} />
-        <View style={{ flexDirection: 'row', marginTop: 20 }}>
-          <TextCategory name={translate.category} />
-        </View>
-        <Text style={styles.title}>{product?.title}</Text>
-        <Text style={styles.price}>{currencyFormat(translate.price)}</Text>
-        <View style={styles.description}>
-          <Text style={styles.descriptionTitle}>Description</Text>
-          <Text style={styles.descriptionText}>{translate.description}</Text>
-        </View>
+        <AppBox boxStyle={styles.box}>
+          <Image source={{ uri: translate.image }} style={styles.image} />
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <TextCategory name={translate.category} />
+          </View>
+          <Text style={styles.title}>{product?.title}</Text>
+          <Text style={styles.price}>{currencyFormat(translate.price)}</Text>
+          <View style={styles.description}>
+            <Text style={styles.descriptionTitle}>Description</Text>
+            <Text style={styles.descriptionText}>{translate.description}</Text>
+          </View>
+        </AppBox>
       </AppContent>
       <Footer style={styles.footer}>
         <PrimaryButton text="Adicionar ao carrinho" onPress={addToCart} />
@@ -69,6 +72,10 @@ const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
 export default ProductScreen;
 
 const styles = StyleSheet.create({
+  box: {
+    width: '100%',
+    alignItems: 'flex-start'
+  },
   image: {
     width: '100%',
     height: 300,

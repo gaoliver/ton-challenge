@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text } from 'react-native';
+import { Image, Pressable, StyleSheet, Text } from 'react-native';
 import { Body, Header, Left, Right } from 'native-base';
 import { Searchbar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
@@ -30,6 +30,10 @@ const AppHeader = (props: IHeaderProps) => {
   const onCartPress = () => {
     navigation.navigate('Cart');
   };
+  
+  const onPressLogo = () => {
+    navigation.navigate('Home');
+  };
 
   return (
     <Header
@@ -38,7 +42,9 @@ const AppHeader = (props: IHeaderProps) => {
       {...props}
     >
       <Left style={styles.sides}>
+        <Pressable onPress={onPressLogo}>
         <Image source={logo} style={styles.logo} />
+        </Pressable>
       </Left>
 
       <Body>
