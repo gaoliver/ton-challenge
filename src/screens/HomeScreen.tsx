@@ -1,16 +1,20 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import ProductBox from '../components/ProductBox';
+import { ApplicationReducer } from '../redux';
 
 import { IProduct, NavigationProp } from '../utils/types';
-import products from '../__mocks__/products';
 
 interface IHomeProps {
   navigation: NavigationProp;
 }
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
+  const products = useSelector(
+    (state: ApplicationReducer) => state.productsReducer.products
+  );
   const onPressProduct = (productId: number) => {
     navigation.navigate('Product', { productId });
   };

@@ -1,18 +1,22 @@
 import { Footer } from 'native-base';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import AppContent from '../components/AppContent';
 import PrimaryButton from '../components/PrimaryButton';
 import TextCategory from '../components/TextCategory';
 import colors from '../constants/colors';
 import { borderRadius } from '../constants/settings';
+import { ApplicationReducer } from '../redux';
 import currencyFormat from '../utils/currencyFormat';
 import { NavigationParamsProp } from '../utils/types';
-import products from '../__mocks__/products';
 
 const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
   const { productId } = route.params;
+  const products = useSelector(
+    (state: ApplicationReducer) => state.productsReducer.products
+  );
   const product = products.find((prod) => prod.id === productId);
 
   const addToCart = () => {

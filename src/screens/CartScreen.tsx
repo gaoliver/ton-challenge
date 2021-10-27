@@ -1,16 +1,20 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import colors from '../constants/colors';
+import { ApplicationReducer } from '../redux';
 import currencyFormat from '../utils/currencyFormat';
 import { IProduct } from '../utils/types';
 import products from '../__mocks__/products';
 
 const CartScreen = () => {
-  type IProductList = { item: IProduct };
+  const products = useSelector((state: ApplicationReducer) => state.productsReducer.cart)
   const totalQuantity = products.length;
   const textPluralSingular = totalQuantity > 1 ? 'produtos' : 'produto';
+
+  type IProductList = { item: IProduct };
   const renderProduct = ({ item }: IProductList) => {
     return <ProductList item={item} />;
   };
