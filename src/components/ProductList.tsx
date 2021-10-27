@@ -4,7 +4,6 @@ import { StyleSheet, Text, Image, View } from 'react-native';
 import colors from '../constants/colors';
 import currencyFormat from '../utils/currencyFormat';
 import { IProduct } from '../utils/types';
-import products from '../__mocks__/products';
 
 import AppBox from './AppBox';
 import PrimaryButton from './PrimaryButton';
