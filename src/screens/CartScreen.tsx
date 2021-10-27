@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { FlatList, RefreshControl, StyleSheet, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as productActions from '../redux/actions/productsActions';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,10 +15,9 @@ interface IHomeProps {
 }
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const products = useSelector(
-    (state: ApplicationReducer) => state.productsReducer.products
+  const {products, loading} = useSelector(
+    (state: ApplicationReducer) => state.productsReducer
   );
 
   const onPressProduct = (productId: number) => {
@@ -31,10 +30,10 @@ const HomeScreen = ({ navigation }: IHomeProps) => {
   );
 
   const getProducts = async () => {
-    setLoading(true);
+    dispatch(productActions.loadService(true));
     const result = await requester(service);
     dispatch(productActions.GetProducts(result.data));
-    setLoading(false);
+    dispatch(productActions.loadService(false));
   };
 
   useEffect(() => {
