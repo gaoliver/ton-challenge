@@ -10,14 +10,14 @@ import colors from '../constants/colors';
 import { borderRadius } from '../constants/settings';
 import { ApplicationReducer } from '../redux';
 import currencyFormat from '../utils/currencyFormat';
-import { NavigationParamsProp } from '../utils/types';
+import { IProduct, NavigationParamsProp } from '../utils/types';
 
 const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
   const { productId } = route.params;
   const products = useSelector(
     (state: ApplicationReducer) => state.productsReducer.products
   );
-  const product = products.find((prod) => prod.id === productId);
+  const product = products.find((prod: IProduct) => prod.id === productId);
 
   const addToCart = () => {
     return navigation.navigate('Cart');

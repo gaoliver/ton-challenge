@@ -1,19 +1,23 @@
 import { IProduct } from '../../utils/types';
-import { GetProducts, AddToCart } from '../actions/productsActions';
+import {
+  GetProducts,
+  AddToCart,
+  LoadService
+} from '../actions/productsActions';
 
-type JobsStateModel = {
+type ProductsStateModel = {
   products: Array<IProduct>;
   cart: Array<IProduct>;
 };
 
-const initialState: JobsStateModel = {
+const initialState: ProductsStateModel = {
   products: [],
   cart: []
 };
 
 export const productsReducer = (
-  state: JobsStateModel = initialState,
-  action: GetProducts | AddToCart
+  state: ProductsStateModel = initialState,
+  action: GetProducts | AddToCart | LoadService
 ) => {
   switch (action.type) {
     case 'ON_GET_PRODUCTS':
