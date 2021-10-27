@@ -1,8 +1,9 @@
 import { Footer } from 'native-base';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import * as productActions from '../redux/actions/productsActions';
 import AppContent from '../components/AppContent';
 import PrimaryButton from '../components/PrimaryButton';
 import TextCategory from '../components/TextCategory';
@@ -14,12 +15,25 @@ import { IProduct, NavigationParamsProp } from '../utils/types';
 
 const ProductScreen = ({ route, navigation }: NavigationParamsProp) => {
   const { productId } = route.params;
-  const products = useSelector(
-    (state: ApplicationReducer) => state.productsReducer.products
+  const dispatch = useDispatch();
+  const { products, cart } = useSelector(
+    (state: ApplicationReducer) => state.productsReducer
   );
   const product = products.find((prod: IProduct) => prod.id === productId);
 
+  const updateCart = () => {
+    let cartList = cart;
+
+    if (product) {
+      cartList.push(product);
+    }
+
+    return cartList;
+  };
+
   const addToCart = () => {
+    const result = updateCart();
+    dispatch(productActions.addToCart(result));
     return navigation.navigate('Cart');
   };
 

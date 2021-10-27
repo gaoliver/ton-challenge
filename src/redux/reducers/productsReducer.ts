@@ -1,9 +1,5 @@
 import { IProduct } from '../../utils/types';
-import {
-  GetProducts,
-  AddToCart,
-  LoadService
-} from '../actions/productsActions';
+import { GetProducts, AddToCart } from '../actions/productsActions';
 
 type ProductsStateModel = {
   products: Array<IProduct>;
@@ -17,7 +13,7 @@ const initialState: ProductsStateModel = {
 
 export const productsReducer = (
   state: ProductsStateModel = initialState,
-  action: GetProducts | AddToCart | LoadService
+  action: GetProducts | AddToCart
 ) => {
   switch (action.type) {
     case 'ON_GET_PRODUCTS':
@@ -28,7 +24,7 @@ export const productsReducer = (
     case 'ON_ADD_TO_CART':
       return {
         ...state,
-        products: action.payload
+        cart: action.payload
       };
     default:
       return state;
