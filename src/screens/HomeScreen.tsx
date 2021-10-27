@@ -16,9 +16,12 @@ interface IHomeProps {
 
 const HomeScreen = ({ navigation }: IHomeProps) => {
   const dispatch = useDispatch();
-  const {products, loading} = useSelector(
-    (state: ApplicationReducer) => state.productsReducer
-  );
+  const {
+    products: productList,
+    loading,
+    query
+  } = useSelector((state: ApplicationReducer) => state.productsReducer);
+  const products = productList.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
 
   const onPressProduct = (productId: number) => {
     navigation.navigate('Product', { productId });

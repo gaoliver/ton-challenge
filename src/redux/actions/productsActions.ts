@@ -11,6 +11,11 @@ export interface GetProducts {
   payload: Array<IProduct>;
 }
 
+export interface SearchProducts {
+  readonly type: 'ON_SEARCH_PRODUCTS';
+  payload: any;
+}
+
 export interface AddToCart {
   readonly type: 'ON_ADD_TO_CART';
   payload: Array<IProduct>;
@@ -21,7 +26,7 @@ export interface ErrorActionProducts {
   payload: any;
 }
 
-export type ProductActions = GetProducts | AddToCart | loadService | ErrorActionProducts;
+export type ProductActions = GetProducts | AddToCart | loadService | SearchProducts | ErrorActionProducts;
 
 export const loadService = (value: any) => {
   return async (dispatch: Dispatch<ProductActions>) => {
@@ -37,6 +42,22 @@ export const GetProducts = (value: Array<IProduct>) => {
     try {
       dispatch({
         type: 'ON_GET_PRODUCTS',
+        payload: value
+      });
+    } catch (error) {
+      dispatch({
+        type: 'ON_ERROR',
+        payload: error
+      });
+    }
+  };
+};
+
+export const searchProducts = (value: any) => {
+  return async (dispatch: Dispatch<ProductActions>) => {
+    try {
+      dispatch({
+        type: 'ON_SEARCH_PRODUCTS',
         payload: value
       });
     } catch (error) {

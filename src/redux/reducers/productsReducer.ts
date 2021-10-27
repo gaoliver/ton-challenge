@@ -1,31 +1,34 @@
 import { IProduct } from '../../utils/types';
-import {
-  GetProducts,
-  AddToCart,
-  loadService
-} from '../actions/productsActions';
+import { ProductActions } from '../actions/productsActions';
 
 type ProductsStateModel = {
   loading: boolean;
+  query: string;
   products: Array<IProduct>;
   cart: Array<IProduct>;
 };
 
 const initialState: ProductsStateModel = {
   loading: false,
+  query: '',
   products: [],
   cart: []
 };
 
 export const productsReducer = (
   state: ProductsStateModel = initialState,
-  action: GetProducts | AddToCart | loadService
+  action: ProductActions
 ) => {
   switch (action.type) {
     case 'ON_LOAD':
       return {
         ...state,
         loading: action.payload
+      };
+    case 'ON_SEARCH_PRODUCTS':
+      return {
+        ...state,
+        query: action.payload
       };
     case 'ON_GET_PRODUCTS':
       return {

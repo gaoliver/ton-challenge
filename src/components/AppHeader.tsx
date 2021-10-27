@@ -9,9 +9,22 @@ import { NavigationProp } from '../utils/types';
 
 interface IHeaderProps {
   navigation: NavigationProp;
+  query?: string;
+  onChangeText?: (text: string) => void;
+  onEndEditing?: () => void;
+  onSubmitEditing?: () => void;
 }
 
-const AppHeader = ({ navigation, ...props }: IHeaderProps) => {
+const translate = (props: IHeaderProps) => ({
+  navigation: props.navigation,
+  query: props.query ? props.query : '',
+  onChangeText: props.onChangeText ? props.onChangeText : () => {},
+  onEndEditing: props.onEndEditing ? props.onEndEditing : () => {},
+  onSubmitEditing: props.onSubmitEditing ? props.onSubmitEditing : () => {}
+});
+
+const AppHeader = (props: IHeaderProps) => {
+  const { navigation, onChangeText, query, onEndEditing, onSubmitEditing } = translate(props);
   const logo = require('../../assets/adaptive-icon.png');
 
   const onCartPress = () => {
@@ -30,10 +43,13 @@ const AppHeader = ({ navigation, ...props }: IHeaderProps) => {
 
       <Body>
         <Searchbar
-          value=""
+          value={query}
           placeholder="Pesquisa seu produto"
           style={styles.searchBar}
           inputStyle={styles.inputStyleSearchBar}
+          onChangeText={onChangeText}
+          onEndEditing={onEndEditing}
+          onSubmitEditing={onSubmitEditing}
         />
       </Body>
 

@@ -19,7 +19,7 @@ export type NavigationProp = StackNavigationProp<StackParamList, 'Home'>;
 export type NavigationParamsProp = NativeStackScreenProps<StackParamList, 'Product'>;
 
 export type StackParamList = {
-  Home: NavigationProp;
+  Home: undefined;
   Cart: undefined;
   Product: { productId: number };
 };
