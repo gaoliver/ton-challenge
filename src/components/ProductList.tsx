@@ -10,14 +10,15 @@ import PrimaryButton from './PrimaryButton';
 
 interface IProductList {
   item: IProduct;
+  onPress?: () => void;
 }
 
-const ProductList = ({ item }: IProductList) => {
+const ProductList = ({ item, onPress }: IProductList) => {
   const translate = {
     image: item.image ? item.image : '',
     title: item.title ? item.title : '',
     description: item.description ? item.description : '',
-    price: item.price ? currencyFormat(item.price) : ''
+    price: item.price ? currencyFormat(item.price) : '',
   };
 
   return (
@@ -36,6 +37,7 @@ const ProductList = ({ item }: IProductList) => {
             paddingHorizontal={15}
             paddingVertical={8}
             color={colors.colors.error}
+            onPress={onPress}
           />
         </View>
       </View>
