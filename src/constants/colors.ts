@@ -6,7 +6,8 @@ export default {
     primary: primary,
     accent: secondary,
     grey: '#555555',
-    price: "#060"
+    price: "#060",
+    error: "#f00"
   },
   light: {
     background: '#d5d5d5',
