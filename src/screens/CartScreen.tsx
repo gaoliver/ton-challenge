@@ -23,7 +23,7 @@ const CartScreen = () => {
     const productIndex = newCart.findIndex(
       (product: IProduct) => product.id === productId
     );
-    newCart.splice(productIndex);
+    newCart.splice(productIndex, 1);
     dispatch(productActions.addToCart(newCart));
     dispatch(productActions.loadService(false));
   };
