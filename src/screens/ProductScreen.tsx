@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     color: colors.light.text
   },
   footer: {
-    backgroundColor: 'transparent',
-    height: 100,
+    backgroundColor: '#FFF',
+    height: 90,
     paddingTop: 15,
     alignItems: 'flex-start'
   }
